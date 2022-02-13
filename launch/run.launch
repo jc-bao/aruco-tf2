@@ -1,0 +1,17 @@
+<launch>
+  <param name="world_tag_id" type="int" value="1" />
+  <param name="world_tag_size" value="0.075" />
+  <arg name="fiducial_len" default="0.038"/>
+  <!-- base package -->
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+  <include file="$(find aruco_detect)/launch/aruco_detect.launch" pass_all_args="true"/>
+
+  <!-- boardcaster -->
+  <node name="tf2_fix_broadcaster" pkg="aruco_tf2" type="pub_fix.py" output="screen" >
+  </node>
+  <!-- listener -->
+
+  <!-- fix boardcaster -->
+  <!-- <node pkg="aruco_tf2" type="pub_tag.py" name="broadcaster_tag" output="screen" >
+  </node> -->
+</launch>

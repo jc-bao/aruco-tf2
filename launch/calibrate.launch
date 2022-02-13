@@ -1,0 +1,14 @@
+<launch>
+    <!-- parameters -->
+    <param name="world_tag_id" type="int" value="1"/>
+    <arg name="fiducial_len" default="0.075"/>
+    
+    <!-- base package -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+    <include file="$(find aruco_detect)/launch/aruco_detect.launch" pass_all_args="true"/>
+
+    <!-- calibrate -->
+    <node name="camera_calibrate" pkg="aruco_tf2" type="camera_calibrate.py" output="screen" >
+    </node>
+
+</launch>
